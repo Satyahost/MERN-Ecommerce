@@ -1,0 +1,172 @@
+/* ====================================
+   SHIPPING PAGE LAYOUT FIXED VERSION
+   Leaves space around all sections
+==================================== */
+
+/* Outer page spacing */
+.shipping-form-container {
+  max-width: 1180px;
+  width: 92%;
+  margin: 3rem auto;
+  padding: 0;
+}
+
+/* Heading */
+.shipping-form-header {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--bg-secondary);
+  margin-bottom: 2.5rem;
+}
+
+/* Main Form Card */
+.shipping-form {
+  width: 100%;
+  max-width: 980px;
+  margin: auto;
+  padding: 2.5rem;
+  background: #ffffff;
+  border-radius: 22px;
+  box-shadow: 0 12px 35px rgba(0,0,0,0.06);
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+/* Sections */
+.shipping-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+/* Input Groups */
+.shipping-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.shipping-form-group label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--primary-dark);
+}
+
+/* Inputs */
+.shipping-form-group input,
+.shipping-form-group select {
+  width: 100%;
+  padding: 0.95rem 1rem;
+  border: 1px solid #dddddd;
+  border-radius: 12px;
+  background: #fff;
+  font-size: 0.96rem;
+  transition: 0.25s ease;
+}
+
+/* Focus */
+.shipping-form-group input:focus,
+.shipping-form-group select:focus {
+  outline: none;
+  border-color: var(--primary-main);
+  box-shadow: 0 0 0 4px rgba(108,91,123,0.12);
+}
+
+/* Button */
+.shipping-submit-btn {
+  grid-column: 1 / -1;
+  width: 100%;
+  max-width: 320px;
+  justify-self: center;
+
+  margin-top: 1rem;
+  padding: 1rem;
+  border: none;
+  border-radius: 14px;
+
+  background: var(--primary-main);
+  color: white;
+
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.shipping-submit-btn:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+/* =========================
+   Tablet
+========================= */
+@media (max-width: 992px) {
+  .shipping-form-container {
+    width: 94%;
+  }
+
+  .shipping-form {
+    max-width: 850px;
+    padding: 2rem;
+    gap: 1.5rem;
+  }
+}
+
+/* =========================
+   Mobile
+========================= */
+@media (max-width: 768px) {
+  .shipping-form-container {
+    width: 94%;
+    margin: 2rem auto;
+  }
+
+  .shipping-form {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+    padding: 1.5rem;
+    border-radius: 18px;
+  }
+
+  .shipping-form-header {
+    font-size: 1.6rem;
+    margin-bottom: 1.8rem;
+  }
+
+  .shipping-submit-btn {
+    max-width: 100%;
+  }
+}
+
+/* =========================
+   Small Mobile
+========================= */
+@media (max-width: 480px) {
+  .shipping-form-container {
+    width: 95%;
+  }
+
+  .shipping-form {
+    padding: 1rem;
+    border-radius: 14px;
+  }
+
+  .shipping-form-header {
+    font-size: 1.35rem;
+  }
+
+  .shipping-form-group input,
+  .shipping-form-group select {
+    padding: 0.8rem 0.9rem;
+    font-size: 0.92rem;
+  }
+
+  .shipping-submit-btn {
+    padding: 0.9rem;
+    font-size: 0.95rem;
+  }
+}

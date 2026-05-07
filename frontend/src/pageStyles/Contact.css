@@ -1,0 +1,30 @@
+.contact-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 60px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: var(--shadow-md);
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form input,
+.contact-form textarea {
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.contact-form button {
+  padding: 10px;
+  background-color: var(--primary-main);
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
