@@ -12,10 +12,10 @@ export const registerUser = handleAsyncError(async (req, res, next) => {
 
   let avatarData = {
     public_id: "default_avatar",
-    url: "/images/profile.png", // default image
+    url: "/images/profile.png", 
   };
 
-  // ✅ Only upload if valid image exists
+  //  Only upload if valid image exists
   if (avatar && avatar.startsWith("data:image")) {
     const mycloud = await cloudinary.uploader.upload(avatar, {
       folder: "avatar",
@@ -63,6 +63,8 @@ export const logout = handleAsyncError(async (req, res, next) => {
   res.cookie("token", null, {
     expires: new Date(Date.now()),
     httpOnly: true,
+    sameSite: "none",
+    secure: true,
   });
   res.status(200).json({
     success: true,
