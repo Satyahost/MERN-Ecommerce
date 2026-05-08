@@ -50,7 +50,7 @@ const CartItem = ({ item }) => {
 
   const handleRemove = () => {
     if (loading) return;
-    // ✅ FIX: pass { productId, userId } instead of just item.product
+    // FIX: pass { productId, userId } instead of just item.product
     dispatch(removeItemFromCart({
       productId: item.product,
       userId: user?._id || null

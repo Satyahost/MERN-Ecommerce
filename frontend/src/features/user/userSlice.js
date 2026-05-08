@@ -12,7 +12,11 @@ export const register = createAsyncThunk(
         },
       };
 
-      const { data } = await axios.post("/api/v1/register", userData, config);
+      const { data } = await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/v1/register`,
+        userData,
+        config,
+      );
 
       return data;
     } catch (error) {
@@ -31,7 +35,11 @@ export const login = createAsyncThunk(
         },
       };
 
-      const { data } = await axios.post("/api/v1/login", {email,password}, config);
+      const { data } = await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/v1/login`,
+        { email, password },
+        config,
+      );
 
       console.log("login data",data);
 
@@ -47,7 +55,9 @@ export const login = createAsyncThunk(
 export const loadUser=createAsyncThunk('user/loadUser',async(_,{rejectWithValue})=>{
 
        try {
-        const{data}=await axios.get('/api/v1/profile')
+        const { data } = await axios.get(
+          `${import.meta.env.VITE_API_URL}/api/v1/profile`,
+        );
         return data
        } catch (error) {
         return rejectWithValue(
@@ -61,7 +71,10 @@ export const logout = createAsyncThunk(
   "user/logout",
   async (_, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post("/api/v1/logout",{withCredentials:true});
+      const { data } = await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/v1/logout`,
+        { withCredentials: true },
+      );
       return data;
     } catch (error) {
       return rejectWithValue(
@@ -80,7 +93,7 @@ export const updateProfile = createAsyncThunk(
           "Content-type": "multipart/form-data",
         },
       };
-       const { data } = await axios.put( "/api/v1/profile/update",
+       const { data } = await axios.put( `${import.meta.env.VITE_API_URL}/api/v1/profile/update`,
         userData,config);
       return data;
     } catch (error) {
@@ -100,7 +113,7 @@ export const updatePassword = createAsyncThunk(
         },
       };
       const { data } = await axios.put(
-        "/api/v1/password/update",
+        `${import.meta.env.VITE_API_URL}/api/v1/password/update`,
         userData,
         config,
       );
@@ -125,7 +138,7 @@ export const forgotPassword = createAsyncThunk(
         },
       };
       const { data } = await axios.post(
-        "/api/v1/password/forgot",
+       ` ${import.meta.env.VITE_API_URL}/api/v1/password/forgot`,
         email,
         config,
       );
@@ -146,8 +159,9 @@ export const resetPassword = createAsyncThunk(
         },
       };
       const { data } = await axios.post(
-      `/api/v1/reset/${token}`,userData,
-        config
+        `${import.meta.env.VITE_API_URL}/api/v1/reset/${token}`,
+        userData,
+        config,
       );
       return data;
     } catch (error) {

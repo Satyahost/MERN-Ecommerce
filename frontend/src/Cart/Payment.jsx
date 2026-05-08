@@ -17,14 +17,14 @@ function Payment() {
 
   const completePayment = async (amount) => {
     try {
-      // ✅ Check Razorpay script is loaded
+      // Check Razorpay script is loaded
       if (!window.Razorpay) {
         toast.error("Razorpay SDK failed to load. Please refresh the page.",
           { position: "top-center", autoClose: 3000 });
         return;
       }
 
-      // ✅ Check amount is valid
+      // Check amount is valid
       if (!amount || amount <= 0) {
         toast.error("Invalid payment amount.",
           { position: "top-center", autoClose: 3000 });
@@ -34,7 +34,7 @@ function Payment() {
       const { data: keyData } = await axios.get('/api/v1/getKey');
       const { key } = keyData;
 
-      const { data: orderData } = await axios.post('/api/v1/payment/process', { amount });
+      const { data: orderData } = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/payment/process`, { amount });
       const { order } = orderData;
      
 
@@ -60,7 +60,7 @@ function Payment() {
         prefill: {
           name: user.name,
           email: user.email,
-          contact: `+91${shippingInfo.phoneNumber}`  // ✅ fixed
+          contact: `+91${shippingInfo.phoneNumber}`  
         },
         theme: {
           color: '#2d72c7'

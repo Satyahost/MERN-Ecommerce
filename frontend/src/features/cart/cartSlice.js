@@ -6,7 +6,9 @@ export const addItemsToCart = createAsyncThunk(
   "cart/addItemsToCart",
   async ({ id, quantity }, { rejectWithValue, getState }) => {
     try {
-      const { data } = await axios.get(`/api/v1/product/${id}`);
+      const { data } = await axios.get(
+        `${import.meta.env.VITE_API_URL}/api/v1/product/${id}`,
+      );
       // ✅ Get userId from auth state — no need to pass it manually everywhere
       const userId = getState().user?.user?._id;
 

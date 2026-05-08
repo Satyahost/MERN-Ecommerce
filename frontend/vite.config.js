@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "http://localhost:8000", // your backend port
+        target: "https://mern-ecommerce-3-19e6.onrender.com", // your backend port
         changeOrigin: true,
         secure: false,
       },

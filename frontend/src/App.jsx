@@ -91,7 +91,7 @@ const App = () => {
         <Route path="/admin/order/:orderId" element={<ProtectedRoute element={<UpdateOrder />} adminOnly={true} />} />
         <Route path="/admin/reviewId" element={<ProtectedRoute element={<ReviewsList />} adminOnly={true} />} />
         <Route path="/cart" element={<Cart/>} />
-        <Route path="*" element={<h1>Page Not Found</h1>} />
+        
       </Routes>
       
       {isAuthenticated && <UserDashboard user={user} />}

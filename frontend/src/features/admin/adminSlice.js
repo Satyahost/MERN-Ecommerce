@@ -6,7 +6,9 @@ export const fetchAdminProducts = createAsyncThunk(
   "admin/fetchAdminProducts",
   async (_, { rejectWithValue }) => {
     try {
-      const { data } = await axios.get("/api/v1/admin/products");
+      const { data } = await axios.get(
+        `${import.meta.env.VITE_API_URL}/api/v1/admin/products`,
+      );
       return data;
     } catch (error) {
       return rejectWithValue(
@@ -23,7 +25,7 @@ export const createProduct = createAsyncThunk(
     try {
       const config = {
         headers: {
-          "Content-Type": "multipart/form-data", // ✅ fixed typo
+          "Content-Type": "multipart/form-data", 
         },
       };
       const { data } = await axios.post(
@@ -45,7 +47,7 @@ export const updateProduct = createAsyncThunk(
     try {
       const config = {
         headers: {
-          "Content-Type": "multipart/form-data", // ✅ fixed typo
+          "Content-Type": "multipart/form-data", 
         },
       };
       const { data } = await axios.put(
@@ -149,7 +151,7 @@ export const deleteOrder = createAsyncThunk(
   "admin/deleteOrder",
   async (id, { rejectWithValue }) => {
     try {
-      const { data } = await axios.delete(`/api/v1/admin/order/${id}`); // ✅ fixed GET → DELETE
+      const { data } = await axios.delete(`/api/v1/admin/order/${id}`); 
       return data;
     } catch (error) {
       return rejectWithValue(error.response?.data || "Failed to delete order");
@@ -223,7 +225,7 @@ const adminSlice = createSlice({
     users: [],
     user: {},
     message: null,
-    orders: [], // ✅ orders starts as empty array
+    orders: [], 
     totalAmount: 0,
     order: {},
     reviews: [],
@@ -265,7 +267,7 @@ const adminSlice = createSlice({
       .addCase(createProduct.fulfilled, (state, action) => {
         state.loading = false;
         state.success = action.payload.success;
-        state.products.push(action.payload.product); // ✅ fixed empty push
+        state.products.push(action.payload.product);
       })
       .addCase(createProduct.rejected, (state, action) => {
         state.loading = false;
@@ -373,7 +375,7 @@ const adminSlice = createSlice({
       })
       .addCase(fetchAllOrders.fulfilled, (state, action) => {
         state.loading = false;
-        state.orders = action.payload.orders; // ✅ fixed: was state.message
+        state.orders = action.payload.orders; 
         state.totalAmount = action.payload.totalAmount;
       })
       .addCase(fetchAllOrders.rejected, (state, action) => {

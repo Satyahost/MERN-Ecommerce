@@ -6,12 +6,16 @@ export const createOrder = createAsyncThunk(
   "order/createOrder",
   async (order, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post("/api/v1/new/order", order, {
-        headers: {
-          "Content-Type": "application/json",
+      const { data } = await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/v1/new/order`,
+        order,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
         },
-        withCredentials: true,
-      });
+      );
 
       return data;
     } catch (error) {
@@ -27,9 +31,12 @@ export const getAllMyOrders = createAsyncThunk(
   "order/getAllMyOrders",
   async (_, { rejectWithValue }) => {
     try {
-      const { data } = await axios.get("/api/v1/order/user", {
-        withCredentials: true,
-      });
+      const { data } = await axios.get(
+        `${import.meta.env.VITE_API_URL}/api/v1/order/user`,
+        {
+          withCredentials: true,
+        },
+      );
 
       return data;
     } catch (error) {
@@ -45,9 +52,12 @@ export const getOrderDetails = createAsyncThunk(
   "order/getOrderDetails",
   async (orderID, { rejectWithValue }) => {
     try {
-      const { data } = await axios.get(`/api/v1/order/${orderID}`, {
-        withCredentials: true,
-      });
+      const { data } = await axios.get(
+        `${import.meta.env.VITE_API_URL}/api/v1/order/${orderID}`,
+        {
+          withCredentials: true,
+        },
+      );
 
       return data;
     } catch (error) {
