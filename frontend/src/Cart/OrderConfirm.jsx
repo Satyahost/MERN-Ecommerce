@@ -13,28 +13,30 @@ const OrderConfirm = () => {
     const { user } = useSelector(state => state.user)
     const navigate = useNavigate()
 
-    // ✅ FIX 1: Redirect back to shipping if shippingInfo is missing or incomplete
+    //  Redirect back to shipping if shippingInfo is missing or incomplete
     useEffect(() => {
         if (!shippingInfo || !shippingInfo.phoneNumber) {
             navigate('/shipping', { replace: true })
         }
     }, [shippingInfo, navigate])
 
-    // ✅ FIX 2: Redirect to cart if cartItems is empty
+    //  Redirect to cart if cartItems is empty
     useEffect(() => {
         if (!cartItems || cartItems.length === 0) {
             navigate('/cart', { replace: true })
         }
     }, [cartItems, navigate])
 
-    // ✅ FIX 3: Guard render — don't render until shippingInfo and cartItems are ready
+    // Guard render — don't render until shippingInfo and cartItems are ready
     // Prevents the "Cannot read properties of undefined" crash during redirect
     if (!shippingInfo?.phoneNumber || !cartItems?.length) return null
 
     const subtotal = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0)
-    const tax = subtotal * 0.18
+    const tax = Number((subtotal * 0.18).toFixed(2))
     const shippingCharges = subtotal > 500 ? 0 : 50
-    const total = subtotal + tax + shippingCharges
+    const total = Number(
+        (subtotal + tax + shippingCharges).toFixed(2)
+    )
 
     const proceedToPayment = () => {
         const data = { subtotal, tax, shippingCharges, total }
@@ -63,7 +65,7 @@ const OrderConfirm = () => {
                         </thead>
                         <tbody>
                             <tr>
-                                {/* ✅ FIX 4: Optional chaining on all shippingInfo fields */}
+                                {/* Optional chaining on all shippingInfo fields */}
                                 <td>{user?.name}</td>
                                 <td>{shippingInfo?.phoneNumber}</td>
                                 <td>
@@ -90,7 +92,7 @@ const OrderConfirm = () => {
                                 <tr key={item.product}>
                                     <td><img src={item.image} alt={item.name} className='product-image' /></td>
                                     <td>{item.name}</td>
-                                    {/* ✅ FIX 5: toFixed(2) for consistent currency formatting */}
+                                    {/* toFixed(2) for consistent currency formatting */}
                                     <td>₹{item.price.toFixed(2)}</td>
                                     <td>{item.quantity}</td>
                                     <td>₹{(item.quantity * item.price).toFixed(2)}</td>

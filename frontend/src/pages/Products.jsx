@@ -21,7 +21,7 @@ const SORT_OPTIONS = [
 ]
 
 const Products = () => {
-  // ✅ FIX: slice uses 'resultPerPage' (no s) and 'totalPages' directly
+  
   const { loading, error, products, resultPerPage, productCount, totalPages } = useSelector(state => state.product)
   const dispatch = useDispatch()
 
@@ -31,7 +31,7 @@ const Products = () => {
   const sort = searchParams.get('sort') || ''
   const currentPage = parseInt(searchParams.get('page'), 10) || 1
 
-  // ✅ Sort handled client-side — no extra API call needed
+  
   const sortedProducts = useMemo(() => {
     if (!products) return []
     if (sort === 'price_asc') return [...products].sort((a, b) => a.price - b.price)
@@ -88,7 +88,7 @@ const Products = () => {
     })
   }, [setSearchParams])
 
-  // ✅ NEW: sort change handler — updates URL, preserves other params
+  
   const handleSortChange = useCallback((value) => {
     setSearchParams(prev => {
       const next = new URLSearchParams(prev)
@@ -98,7 +98,7 @@ const Products = () => {
     })
   }, [setSearchParams])
 
-  // totalPages comes directly from Redux (set by the API response)
+  
 
   return (
     <>

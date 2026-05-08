@@ -4,8 +4,14 @@ import crypto from "crypto";
 
 // Create Payment Order
 export const processPayment = handleAsyncError(async (req, res) => {
+  // amount received in rupees
+  const amountInRupees = Number(req.body.amount);
+
+  // convert rupees to paise
+ 
+
   const options = {
-  amount: Math.round(Number(req.body.amount)),
+    amount: Math.round(amountInRupees * 100),
     currency: "INR",
   };
 
@@ -28,15 +34,14 @@ export const sendAPIKey = handleAsyncError(async (req, res) => {
 export const paymentVerification = handleAsyncError(async (req, res) => {
   const { razorpay_payment_id, razorpay_order_id, razorpay_signature } =
     req.body;
-    console.log("Secret being used:", process.env.RAZORPAY_API_SECRET);
-    console.log("Received signature:", razorpay_signature);
+
   const body = razorpay_order_id + "|" + razorpay_payment_id;
 
   const expectedSignature = crypto
     .createHmac("sha256", process.env.RAZORPAY_API_SECRET)
-    .update(body)
+    .update(body.toString())
     .digest("hex");
-     
+
   const isAuthentic = expectedSignature === razorpay_signature;
 
   if (isAuthentic) {

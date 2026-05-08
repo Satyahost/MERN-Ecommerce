@@ -115,7 +115,7 @@ function OrderDetails() {
                 <tr className="table-row">
                   <th className="table-cell">Phone</th>
                   <td className="table-cell">
-                    {shippingInfo.phoneNumber}
+                    {shippingInfo.phoneNo}
                   </td>
                 </tr>
               </tbody>

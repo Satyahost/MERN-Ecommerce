@@ -4,7 +4,7 @@ import {
   processPayment,
   sendAPIKey,
   paymentVerification,
-} from "../controller/paymentController.js"; // ✅ add paymentVerification import
+} from "../controller/paymentController.js"; 
 
 const router = express.Router();
 

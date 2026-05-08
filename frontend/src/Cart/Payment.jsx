@@ -82,7 +82,7 @@ function Payment() {
       <CheckoutPath activePath={2} />
       <div className="payment-container">
         <Link to='/order/confirm' className='payment-go-back'>Go Back</Link>
-        <button className='payment-btn' onClick={() => completePayment(orderItem.total)}>
+        <button className='payment-btn' onClick={() => completePayment(Number(orderItem.total.toFixed(2)))}>
          
           Pay ({orderItem.total})/-
         </button>  
