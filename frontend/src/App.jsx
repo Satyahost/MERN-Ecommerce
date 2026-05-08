@@ -15,7 +15,7 @@ import UpdateProfile from './User/UpdateProfile'
 import UpdatePassword from './User/UpdatePassword'
 import ForgotPassword from './User/ForgotPassword'
 import ResetPassword from './User/ResetPassword'
-import Cart from './Cart/cart'
+
 import Shipping from './Cart/Shipping'
 import OrderConfirm from './Cart/OrderConfirm'
 import Payment from './Cart/Payment'
@@ -33,6 +33,7 @@ import UpdateOrder from './Admin/UpdateOrder'
 import ReviewsList from './Admin/ReviewsList'
 import AboutUs from './pages/AboutUs'
 import ContactUs from './pages/ContactUs'
+import Cart from './Cart/Cart'
 
 const App = () => {
   const { isAuthenticated, user } = useSelector(state => state.user);
@@ -89,7 +90,7 @@ const App = () => {
         <Route path="/admin/orders" element={<ProtectedRoute element={<OrdersList />} adminOnly={true} />} />
         <Route path="/admin/order/:orderId" element={<ProtectedRoute element={<UpdateOrder />} adminOnly={true} />} />
         <Route path="/admin/reviewId" element={<ProtectedRoute element={<ReviewsList />} adminOnly={true} />} />
-        <Route path="/cart" element={<Cart />} />
+        <Route path="/cart" element={<Cart/>} />
         <Route path="*" element={<h1>Page Not Found</h1>} />
       </Routes>
       
