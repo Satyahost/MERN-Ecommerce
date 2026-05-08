@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react'
-import '../UserStyles/form.css'
+import '../UserStyles/Form.css'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { useDispatch, useSelector } from 'react-redux'
