@@ -39,13 +39,13 @@ const App = () => {
   const { isAuthenticated, user } = useSelector(state => state.user);
   const dispatch = useDispatch()
 
-  // ✅ FIX 1: Always call loadUser on app start (not just when isAuthenticated)
+  // Always call loadUser on app start (not just when isAuthenticated)
   // This lets the server verify the cookie/token and restore the session
   useEffect(() => {
     dispatch(loadUser())
   }, [dispatch])
 
-  // ✅ FIX 2: Whenever auth state changes and user is available,
+  // Whenever auth state changes and user is available,
   // load THAT user's cart from localStorage (user-specific key)
   useEffect(() => {
     if (isAuthenticated && user?._id) {
