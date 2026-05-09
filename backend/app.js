@@ -24,7 +24,10 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://mern-ecommerce-3-19e6.onrender.com",
+    origin: [
+      "https://mern-ecommerce-yz25.vercel.app",
+      "https://mern-ecommerce-yz25-ay4rtiws3-satyahosts-projects.vercel.app",
+    ],
     credentials: true,
   }),
 );
