@@ -1,5 +1,5 @@
 import React from 'react';
-import { Phone ,Mail, GitHub, LinkedIn, YouTube, Instagram} from '@mui/icons-material'
+import { Phone ,Mail, GitHub, LinkedIn, YouTube, Instagram, Twitter} from '@mui/icons-material'
 import '../componentStyles/Footer.css'
 
 const Footer=() => {
@@ -17,20 +17,20 @@ const Footer=() => {
         <div className="footer-section social">
             <h3>Follow me</h3>
             <div className='social-links'>
-                <a href="" target='_blank'>
-                <GitHub className='socila-icon'/>
+                <a href="https://github.com/Satyahost" target='_blank'>
+                <GitHub className='social-icon'/>
                 </a>
                 
-                <a href="" target='_blank'>
-                <LinkedIn className='socila-icon' />
+                <a href="https://www.linkedin.com/in/satyam-kumar-209597323/" target='_blank'>
+                <LinkedIn className='social-icon' />
+                </a>
+
+                <a href="https://x.com/SATYAYDV65" target='_blank'>
+                <Twitter className='social-icon'/>
                 </a>
 
                 <a href="" target='_blank'>
-                <YouTube className='socila-icon' />
-                </a>
-
-                <a href="" target='_blank'>
-                <Instagram className='socila-icon' />
+                <Instagram className='social-icon' />
                 </a>
                       
                 
@@ -40,7 +40,7 @@ const Footer=() => {
         {/*section3*/}
         <div className="footer-section about">
             <h3>About</h3>
-            <p>full stack web developer working on real life project and also intrested in machine learning</p>
+                <p>Aspiring Full Stack Developer | Crafting real-world MERN applications & passionate about Machine Learning</p>
         </div>
        </div>
     <div className="footer-bottom">

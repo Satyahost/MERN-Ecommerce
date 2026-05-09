@@ -50,7 +50,7 @@ function Payment() {
             razorpay_payment_id: response.razorpay_payment_id,
             razorpay_order_id: response.razorpay_order_id,
             razorpay_signature: response.razorpay_signature
-          }, { withCredentials: true });
+          },{ withCredentials: true });
           if (data.success) {
             navigate(`/paymentSuccess?reference=${data.reference}`)
           } else {
@@ -71,7 +71,7 @@ function Payment() {
       rzp.open();
 
     } catch (error) {
-      toast.error(error.message, { position: "top-center", autoClose: 3000 });
+      toast.error(error.message, { position: "top-center", autoClose: 2000 });
     }
   }
 
