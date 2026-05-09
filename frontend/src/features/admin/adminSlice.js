@@ -8,6 +8,7 @@ export const fetchAdminProducts = createAsyncThunk(
     try {
       const { data } = await axios.get(
         `${import.meta.env.VITE_API_URL}/api/v1/admin/products`,
+        { withCredentials: true },
       );
       return data;
     } catch (error) {
@@ -25,8 +26,9 @@ export const createProduct = createAsyncThunk(
     try {
       const config = {
         headers: {
-          "Content-Type": "multipart/form-data", 
+          "Content-Type": "multipart/form-data",
         },
+        withCredentials: true,
       };
       const { data } = await axios.post(
         `${import.meta.env.VITE_API_URL}/api/v1/admin/product/create`,
@@ -47,8 +49,9 @@ export const updateProduct = createAsyncThunk(
     try {
       const config = {
         headers: {
-          "Content-Type": "multipart/form-data", 
+          "Content-Type": "multipart/form-data",
         },
+        withCredentials: true,
       };
       const { data } = await axios.put(
         `${import.meta.env.VITE_API_URL}/api/v1/admin/product/${id}`,
@@ -69,6 +72,7 @@ export const deleteProduct = createAsyncThunk(
     try {
       const { data } = await axios.delete(
         `${import.meta.env.VITE_API_URL}/api/v1/admin/product/${productId}`,
+        { withCredentials: true },
       );
       return { productId };
     } catch (error) {
@@ -84,6 +88,7 @@ export const fetchUsers = createAsyncThunk(
     try {
       const { data } = await axios.get(
         `${import.meta.env.VITE_API_URL}/api/v1/admin/users`,
+        { withCredentials: true },
       );
       return data;
     } catch (error) {
@@ -99,6 +104,7 @@ export const getSingleUser = createAsyncThunk(
     try {
       const { data } = await axios.get(
         `${import.meta.env.VITE_API_URL}/api/v1/admin/user/${id}`,
+        { withCredentials: true },
       );
       return data;
     } catch (error) {
@@ -116,9 +122,8 @@ export const updateUserRole = createAsyncThunk(
     try {
       const { data } = await axios.put(
         `${import.meta.env.VITE_API_URL}/api/v1/admin/user/${userId}`,
-        {
-          role,
-        },
+        {role},
+        { withCredentials: true },
       );
       return data;
     } catch (error) {
@@ -136,6 +141,7 @@ export const deleteUser = createAsyncThunk(
     try {
       const { data } = await axios.delete(
         `${import.meta.env.VITE_API_URL}/api/v1/admin/user/${userId}`,
+        { withCredentials: true },
       );
       return data;
     } catch (error) {
@@ -151,6 +157,7 @@ export const fetchAllOrders = createAsyncThunk(
     try {
       const { data } = await axios.get(
         `${import.meta.env.VITE_API_URL}/api/v1/admin/orders`,
+        { withCredentials: true },
       );
       return data;
     } catch (error) {
@@ -166,6 +173,7 @@ export const deleteOrder = createAsyncThunk(
     try {
       const { data } = await axios.delete(
         `${import.meta.env.VITE_API_URL}/api/v1/admin/order/${id}`,
+        { withCredentials: true },
       ); 
       return data;
     } catch (error) {
@@ -183,6 +191,7 @@ export const updateOrderStatus = createAsyncThunk(
         headers: {
           "Content-Type": "application/json",
         },
+        withCredentials: true,
       };
       const { data } = await axios.put(
         `${import.meta.env.VITE_API_URL}/api/v1/admin/order/${orderId}`,
@@ -203,6 +212,7 @@ export const fetchProductReviews = createAsyncThunk(
     try {
       const { data } = await axios.get(
         `${import.meta.env.VITE_API_URL}/api/v1/admin/reviews?id=${productId}`,
+        { withCredentials: true },
       );
       return data;
     } catch (error) {
@@ -220,6 +230,7 @@ export const deleteReview = createAsyncThunk(
     try {
       const { data } = await axios.delete(
         `${import.meta.env.VITE_API_URL}/api/v1/admin/reviews?productId=${productId}&id=${reviewId}`,
+        { withCredentials: true },
       );
       return data;
     } catch (error) {

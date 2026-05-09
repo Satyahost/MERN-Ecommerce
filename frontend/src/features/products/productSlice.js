@@ -28,8 +28,8 @@ export const getProductDetails = createAsyncThunk(
   "product/getProductDetails",
   async (id, { rejectWithValue }) => {
     try {
-        const link=`/api/v1/product/${id}`;
-        const {data}=await axios.get(link);
+        const link = `${import.meta.env.VITE_API_URL}/api/v1/product/${id}`;
+        const { data } = await axios.get(link, { withCredentials: true });
         return data;
         
     } catch (error) {
@@ -47,7 +47,8 @@ export const createReview = createAsyncThunk(
       const config={
         headers:{
           'Content-Type':'application/json'
-        }
+        },
+        withCredentials: true
       }
    
       const { data } = await axios.put(

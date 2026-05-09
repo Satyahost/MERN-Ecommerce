@@ -8,6 +8,7 @@ export const addItemsToCart = createAsyncThunk(
     try {
       const { data } = await axios.get(
         `${import.meta.env.VITE_API_URL}/api/v1/product/${id}`,
+        { withCredentials: true },
       );
       // Get userId from auth state — no need to pass it manually everywhere
       const userId = getState().user?.user?._id;

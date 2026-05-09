@@ -10,6 +10,7 @@ export const register = createAsyncThunk(
         headers: {
           "Content-type": "multipart/form-data",
         },
+        withCredentials: true,
       };
 
       const { data } = await axios.post(
@@ -30,9 +31,10 @@ export const login = createAsyncThunk(
   async ({email,password}, { rejectWithValue }) => {
     try {
       const config = {
-            headers: {
+        headers: {
           "Content-type": "application/json",
         },
+        withCredentials: true,
       };
 
       const { data } = await axios.post(
@@ -40,8 +42,6 @@ export const login = createAsyncThunk(
         { email, password },
         config,
       );
-
-      console.log("login data",data);
 
       return data;
     } catch (error) {
@@ -57,6 +57,7 @@ export const loadUser=createAsyncThunk('user/loadUser',async(_,{rejectWithValue}
        try {
         const { data } = await axios.get(
           `${import.meta.env.VITE_API_URL}/api/v1/profile`,
+          { withCredentials: true },
         );
         return data
        } catch (error) {
@@ -73,12 +74,13 @@ export const logout = createAsyncThunk(
     try {
       const { data } = await axios.post(
         `${import.meta.env.VITE_API_URL}/api/v1/logout`,
+        {},
         { withCredentials: true },
       );
       return data;
     } catch (error) {
       return rejectWithValue(
-        error.response?.data || "  Logout Failed ",
+        error.response?.data || "Logout Failed ",
       );
     }
   },
@@ -92,6 +94,7 @@ export const updateProfile = createAsyncThunk(
         headers: {
           "Content-type": "multipart/form-data",
         },
+        withCredentials: true,
       };
        const { data } = await axios.put( `${import.meta.env.VITE_API_URL}/api/v1/profile/update`,
         userData,config);
@@ -111,6 +114,7 @@ export const updatePassword = createAsyncThunk(
         headers: {
           "Content-type": "application/json",
         },
+        withCredentials: true,
       };
       const { data } = await axios.put(
         `${import.meta.env.VITE_API_URL}/api/v1/password/update`,
@@ -136,9 +140,10 @@ export const forgotPassword = createAsyncThunk(
         headers: {
           "Content-type": "application/json",
         },
+        withCredentials: true,
       };
       const { data } = await axios.post(
-       ` ${import.meta.env.VITE_API_URL}/api/v1/password/forgot`,
+       `${import.meta.env.VITE_API_URL}/api/v1/password/forgot`,
         email,
         config,
       );
@@ -157,6 +162,7 @@ export const resetPassword = createAsyncThunk(
         headers: {
           "Content-type": "application/json",
         },
+        withCredentials: true,
       };
       const { data } = await axios.post(
         `${import.meta.env.VITE_API_URL}/api/v1/reset/${token}`,
