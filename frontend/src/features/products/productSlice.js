@@ -5,7 +5,7 @@ export const getProduct = createAsyncThunk(
   "product/getProduct",
   async ({keyword="",page=1,category=""}, { rejectWithValue }) => {
     try {
-         let link = `/api/v1/products?page=${page}`;
+         let link = `${import.meta.env.VITE_API_URL}/api/v1/products?page=${page}`;
 
          if(category){
             link += `&category=${encodeURIComponent(category)}`;
@@ -50,7 +50,11 @@ export const createReview = createAsyncThunk(
         }
       }
    
-      const { data } = await axios.put("/api/v1/review",{rating,comment,productId},config);
+      const { data } = await axios.put(
+        `${import.meta.env.VITE_API_URL}/api/v1/review`,
+        { rating, comment, productId },
+        config,
+      );
       return data;
     } catch (error) {
       return rejectWithValue(error.response?.data || "An error occured");

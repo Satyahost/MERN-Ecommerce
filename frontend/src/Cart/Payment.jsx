@@ -31,7 +31,7 @@ function Payment() {
         return;
       }
 
-      const { data: keyData } = await axios.get('/api/v1/getKey');
+      const { data: keyData } = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/getKey`);
       const { key } = keyData;
 
       const { data: orderData } = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/payment/process`, { amount });
@@ -46,7 +46,7 @@ function Payment() {
         description: 'Ecommerce website Payment Transaction',
         order_id: order.id,
         handler: async function (response) {
-          const { data } = await axios.post('/api/v1/paymentVerification', {
+          const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/paymentVerification`, {
             razorpay_payment_id: response.razorpay_payment_id,
             razorpay_order_id: response.razorpay_order_id,
             razorpay_signature: response.razorpay_signature

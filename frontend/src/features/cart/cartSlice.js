@@ -9,7 +9,7 @@ export const addItemsToCart = createAsyncThunk(
       const { data } = await axios.get(
         `${import.meta.env.VITE_API_URL}/api/v1/product/${id}`,
       );
-      // ✅ Get userId from auth state — no need to pass it manually everywhere
+      // Get userId from auth state — no need to pass it manually everywhere
       const userId = getState().user?.user?._id;
 
       return {
@@ -30,8 +30,8 @@ export const addItemsToCart = createAsyncThunk(
 const cartSlice = createSlice({
   name: "cart",
   initialState: {
-    cartItems: [], // ✅ Empty on start — loadUserCart fills this after login
-    shippingInfo: {}, // ✅ Empty on start — loadUserCart fills this after login
+    cartItems: [], //Empty on start — loadUserCart fills this after login
+    shippingInfo: {}, //Empty on start — loadUserCart fills this after login
     loading: false,
     error: null,
     success: false,
@@ -39,7 +39,7 @@ const cartSlice = createSlice({
     removingId: null,
   },
   reducers: {
-    // ✅ NEW: Call this after login — loads that user's cart from localStorage
+    // NEW: Call this after login — loads that user's cart from localStorage
     loadUserCart: (state, action) => {
       const userId = action.payload;
       state.cartItems =
@@ -56,7 +56,7 @@ const cartSlice = createSlice({
       state.message = null;
     },
 
-    // ✅ Updated: pass { productId, userId } instead of just productId
+    // Updated: pass { productId, userId } instead of just productId
     removeItemFromCart: (state, action) => {
       const { productId, userId } = action.payload;
       state.removingId = productId;
@@ -72,7 +72,7 @@ const cartSlice = createSlice({
       state.removingId = null;
     },
 
-    // ✅ Updated: pass { shippingData, userId } instead of just the data
+    // Updated: pass { shippingData, userId } instead of just the data
     saveShippingInfo: (state, action) => {
       const { shippingData, userId } = action.payload;
       state.shippingInfo = shippingData;
@@ -84,7 +84,7 @@ const cartSlice = createSlice({
       }
     },
 
-    // ✅ Updated: pass userId to also clear localStorage, or null to only reset Redux state
+    // Updated: pass userId to also clear localStorage, or null to only reset Redux state
     clearCart: (state, action) => {
       const userId = action.payload;
       state.cartItems = [];
@@ -122,7 +122,7 @@ const cartSlice = createSlice({
         state.success = true;
         state.error = null;
 
-        // ✅ Save to user-specific key, or guest key if not logged in
+        // Save to user-specific key, or guest key if not logged in
         const storageKey = userId ? `cartItems_${userId}` : "cartItems_guest";
         localStorage.setItem(storageKey, JSON.stringify(state.cartItems));
       })
