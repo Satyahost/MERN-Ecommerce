@@ -31,10 +31,10 @@ function Payment() {
         return;
       }
 
-      const { data: keyData } = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/getKey`);
+      const { data: keyData } = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/getKey`, { withCredentials: true });
       const { key } = keyData;
 
-      const { data: orderData } = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/payment/process`, { amount });
+      const { data: orderData } = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/payment/process`, { amount }, { withCredentials: true });
       const { order } = orderData;
      
 
@@ -50,7 +50,7 @@ function Payment() {
             razorpay_payment_id: response.razorpay_payment_id,
             razorpay_order_id: response.razorpay_order_id,
             razorpay_signature: response.razorpay_signature
-          });
+          }, { withCredentials: true });
           if (data.success) {
             navigate(`/paymentSuccess?reference=${data.reference}`)
           } else {
@@ -82,7 +82,7 @@ function Payment() {
       <CheckoutPath activePath={2} />
       <div className="payment-container">
         <Link to='/order/confirm' className='payment-go-back'>Go Back</Link>
-        <button className='payment-btn' onClick={() => completePayment(Number(orderItem.total.toFixed(2)))}>
+        <button className='payment-btn' onClick={() => completePayment(Math.round(orderItem.total * 100))}>
          
           Pay ({orderItem.total})/-
         </button>  
