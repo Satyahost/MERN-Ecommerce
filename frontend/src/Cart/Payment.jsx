@@ -11,7 +11,6 @@ import { toast } from 'react-toastify'
 
 function Payment() {
   const orderItem = JSON.parse(sessionStorage.getItem('orderItem'))||{};
-  console.log(orderItem, amount)
   const { user } = useSelector(state => state.user)
   const { shippingInfo } = useSelector(state => state.cart)
   const navigate = useNavigate();
