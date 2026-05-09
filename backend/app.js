@@ -24,11 +24,16 @@ const app = express();
 
 app.use(
   cors({
-    origin: [
-      "https://mern-ecommerce-yz25.vercel.app",
-      "https://mern-ecommerce-yz25-ay4rtiws3-satyahosts-projects.vercel.app",
-    ],
+    origin: function (origin, callback) {
+      if (!origin || origin.endsWith(".vercel.app")) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   }),
 );
 
