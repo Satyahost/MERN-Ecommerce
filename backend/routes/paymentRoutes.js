@@ -9,7 +9,7 @@ import {
 const router = express.Router();
 
 router.route("/payment/process").post(verifyUserAuth, processPayment);
-router.route("/getKey").get(verifyUserAuth, sendAPIKey);
-router.route("/paymentVerification").post(verifyUserAuth, paymentVerification); // ✅ fixed
+router.route("/getKey").get(sendAPIKey);
+router.route("/paymentVerification").post(verifyUserAuth, paymentVerification); 
 
 export default router;
