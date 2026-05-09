@@ -10,7 +10,8 @@ import { useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
 
 function Payment() {
-  const orderItem = JSON.parse(sessionStorage.getItem('orderItem'))
+  const orderItem = JSON.parse(sessionStorage.getItem('orderItem'))||{};
+  console.log(orderItem, amount)
   const { user } = useSelector(state => state.user)
   const { shippingInfo } = useSelector(state => state.cart)
   const navigate = useNavigate();
@@ -82,7 +83,14 @@ function Payment() {
       <CheckoutPath activePath={2} />
       <div className="payment-container">
         <Link to='/order/confirm' className='payment-go-back'>Go Back</Link>
-        <button className='payment-btn' onClick={() => completePayment(Math.round(orderItem.total * 100))}>
+        <button className='payment-btn' onClick={() => {
+          if (!orderItem?.total) {
+            toast.error("Order total missing");
+            return;
+          }
+
+          completePayment(Number(orderItem.total));
+        }}>
          
           Pay ({orderItem.total})/-
         </button>  
