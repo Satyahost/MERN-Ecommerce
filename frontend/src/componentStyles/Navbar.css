@@ -18,6 +18,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
   }
   
   .navbar-logo a {
@@ -131,6 +133,9 @@
   .navbar-hamburger {
     display: none;
     cursor: pointer;
+    flex-shrink: 0;
+    width: 32px;
+    justify-content: center;
   }
   
   @media (max-width: 768px) {

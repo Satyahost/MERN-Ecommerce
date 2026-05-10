@@ -12,7 +12,7 @@ import { toast } from 'react-toastify'
 import NoProduct from '../components/NoProduct'
 import Pagination from '../components/Pagination'
 
-const CATEGORIES = ['Laptop', 'Mobile', 'TV', 'Fruits', 'Watch', 'Shirt', 'Pant']
+const CATEGORIES = ['Laptop', 'Mobile', 'TV' ,'Headphone','Watch', 'Shirt', 'Pant','Jacket']
 
 const SORT_OPTIONS = [
   { label: 'Default', value: '' },

@@ -4,6 +4,9 @@
   gap: 20px;
   padding: 20px;
   margin-top: 100px;
+  overflow-x: hidden;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .filter-section {
@@ -160,10 +163,46 @@
 }
 
 .products-product-container {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1.5rem;
-  justify-content: center;
+
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .products-product-container {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+}
+
+/* Small Tablet */
+@media (max-width: 768px) {
+  .products-product-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+}
+
+/* Mobile → EXACTLY 2 cards */
+@media (max-width: 600px) {
+  .products-product-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    width: 100%;
+  }
+}
+
+/* Tiny Mobile */
+@media (max-width: 380px) {
+  .products-product-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
 }
 
 .results-count {
