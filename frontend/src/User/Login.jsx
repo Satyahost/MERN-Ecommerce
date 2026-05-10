@@ -41,7 +41,7 @@ const Login = () => {
     if (success) {
       toast.success("Login Successful", {
         position: "top-center",
-        autoClose: 3000,
+        autoClose: 2000,
       });
       dispatch(removeSuccess());
     }

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Phone ,Mail, GitHub, LinkedIn, YouTube, Instagram, Twitter} from '@mui/icons-material'
+import { Phone ,Mail, GitHub, LinkedIn, YouTube, Instagram} from '@mui/icons-material'
+import XIcon from '@mui/icons-material/X';
 import '../componentStyles/Footer.css'
 
 const Footer=() => {
@@ -26,7 +27,7 @@ const Footer=() => {
                 </a>
 
                 <a href="https://x.com/SATYAYDV65" target='_blank'>
-                <Twitter className='social-icon'/>
+                <XIcon className='social-icon' />
                 </a>
 
                 <a href="" target='_blank'>

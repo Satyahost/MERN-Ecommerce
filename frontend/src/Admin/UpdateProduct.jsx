@@ -84,7 +84,7 @@ const UpdateProduct = () => {
         if (success) {
             toast.success("Product Updated Successfully", {
                 position: "top-center",
-                autoClose: 3000,
+                autoClose: 2000,
             });
 
             dispatch(removeSuccess());
@@ -94,7 +94,7 @@ const UpdateProduct = () => {
         if (error) {
             toast.error(error, {
                 position: "top-center",
-                autoClose: 3000,
+                autoClose: 2000,
             });
 
             dispatch(removeErrors());

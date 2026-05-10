@@ -20,14 +20,14 @@ function Payment() {
       // Check Razorpay script is loaded
       if (!window.Razorpay) {
         toast.error("Razorpay SDK failed to load. Please refresh the page.",
-          { position: "top-center", autoClose: 3000 });
+          { position: "top-center", autoClose: 2000 });
         return;
       }
 
       // Check amount is valid
       if (!amount || amount <= 0) {
         toast.error("Invalid payment amount.",
-          { position: "top-center", autoClose: 3000 });
+          { position: "top-center", autoClose: 2000 });
         return;
       }
 

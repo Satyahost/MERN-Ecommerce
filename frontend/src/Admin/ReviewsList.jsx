@@ -35,7 +35,7 @@ const ReviewsList = () => {
     if (error) {
       toast.error(error?.message || error, {
         position: "top-center",
-        autoClose: 3000,
+        autoClose: 2000,
       });
       dispatch(removeErrors());
     }
@@ -60,7 +60,7 @@ const ReviewsList = () => {
     if (success) {
       toast.success(message || "Action successful", {
         position: "top-center",
-        autoClose: 3000,
+        autoClose: 2000,
       });
 
         dispatch(fetchAdminProducts());

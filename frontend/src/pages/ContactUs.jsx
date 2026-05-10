@@ -28,7 +28,7 @@ const ContactUs = () => {
 
                 toast.success('Message sent successfully!', {
                     position: 'top-right',
-                    autoClose: 3000,
+                    autoClose: 2000,
                     theme: 'dark'
                 });
             })
@@ -37,7 +37,7 @@ const ContactUs = () => {
                 setIsSending(false);
                 toast.error('Failed to send message. Please try again.', {
                     position: 'top-right',
-                    autoClose: 3000,
+                    autoClose: 2000,
                     theme: 'dark'
                 });
             });

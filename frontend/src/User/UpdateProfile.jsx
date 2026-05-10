@@ -47,29 +47,29 @@ const UpdateProfile = () => {
         }
     }, [user, dispatch])
 
-    // ✅ Handle image upload (base64)
+    // Handle image upload (base64)
     const profileImageUpdate = async (e) => {
         const file = e.target.files[0];
         if (!file) return;
 
         try {
-            // ✅ Compression options
+            // Compression options
             const options = {
-                maxSizeMB: 0.5,          // 🔥 max size (0.5 MB)
-                maxWidthOrHeight: 800,   // 🔥 resize image
+                maxSizeMB: 0.5,          
+                maxWidthOrHeight: 800,   
                 useWebWorker: true,
             };
 
-            // ✅ Compress image
+            // Compress image
             const compressedFile = await imageCompression(file, options);
 
-            // ✅ Convert to base64
+            //Convert to base64
             const reader = new FileReader();
 
             reader.onload = () => {
                 if (reader.readyState === 2) {
                     setAvatarPreview(reader.result);
-                    setAvatar(reader.result); // base64
+                    setAvatar(reader.result); 
                 }
             };
 
@@ -79,7 +79,7 @@ const UpdateProfile = () => {
             toast.error("Image compression failed");
         }
     };
-    // ✅ Submit form
+    //Submit form
     const updateSubmit = (e) => {
         e.preventDefault()
 
@@ -90,13 +90,13 @@ const UpdateProfile = () => {
         }))
     }
 
-    // ✅ Error toast (single)
+    // Error toast (single)
     useEffect(() => {
         if (error) {
             toast.error(error, {
                 position: "top-center",
                 autoClose: 3000,
-                toastId: "update-error" // ✅ prevents duplicate
+                toastId: "update-error" 
             });
 
             dispatch(removeErrors());
@@ -117,7 +117,7 @@ const UpdateProfile = () => {
         }
     }, [success]);
 
-    // ✅ Reset refs on unmount (important)
+    // Reset refs on unmount 
     useEffect(() => {
         return () => {
             successToastShown.current = false

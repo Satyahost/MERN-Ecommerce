@@ -78,7 +78,7 @@ function PaymentSuccess() {
           error.message || 'Order creation error',
           {
             position: 'top-center',
-            autoClose: 3000,
+            autoClose: 2000,
           }
         )
       }
@@ -92,7 +92,7 @@ function PaymentSuccess() {
     if (success) {
       toast.success('Order created successfully!', {
         position: 'top-center',
-        autoClose: 3000,
+        autoClose: 2000,
       })
 
       dispatch(removeSuccess())
@@ -103,7 +103,7 @@ function PaymentSuccess() {
     if (error) {
       toast.error(error, {
         position: 'top-center',
-        autoClose: 3000,
+        autoClose: 2000,
       })
 
       dispatch(removeErrors())

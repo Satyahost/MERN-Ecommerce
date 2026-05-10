@@ -36,7 +36,7 @@ const Register = () => {
     const registerSubmit=(e)=>{
          e.preventDefault();
          if(!name || !email ||!password){
-             toast.error('Please fill out all the required fields', { position: "top-center", autoClose: 3000 });
+             toast.error('Please fill out all the required fields', { position: "top-center", autoClose: 2000 });
              return;    
          }
         const myForm = new FormData();
@@ -52,14 +52,14 @@ const Register = () => {
     }
     useEffect(() => {
         if (error) {
-          toast.error(error , { position: "top-center", autoClose: 3000 });
+          toast.error(error , { position: "top-center", autoClose: 2000 });
           dispatch(removeErrors());
         }
       }, [dispatch, error]);
      
     useEffect(() => {
         if (success) {
-            toast.success("Registration Successful",{position: "top-center", autoClose: 3000 });
+            toast.success("Registration Successful",{position: "top-center", autoClose: 2000 });
             dispatch(removeSuccess());
             navigate('/login')
         }

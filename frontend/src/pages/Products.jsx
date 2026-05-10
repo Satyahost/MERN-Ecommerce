@@ -51,7 +51,7 @@ const Products = () => {
     if (error) {
       toast.error(error?.message || error, {
         position: 'top-center',
-        autoClose: 3000,
+        autoClose: 2000,
         toastId: 'products-error',
       })
       dispatch(removeErrors())

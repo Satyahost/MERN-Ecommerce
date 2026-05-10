@@ -51,40 +51,44 @@ const ProductsList = () => {
    <PageTitle title='All Products'/>
     <div className="product-list-container">
       <h1 className="product-list-title">All Products</h1>
-      <table className="product-table">
-        <thead>
-          <tr>
-            <th>Sl No</th>
-            <th>Product Image</th>
-            <th>Product Name</th>
-            <th>Price</th>
-            <th>Ratings</th>
-            <th>Category</th>
-            <th>Stock</th>
-            <th>Created At</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-            {products.map((product,index) => (
-              <tr key={product._id}>
-              <td>{index+1}</td>
-              <td><img src={product.image[0].url||'/no-image.png'} alt={product.name} className='admin-product-image' /></td>
-                <td>{product.name}</td>
-                <td>{product.price}</td>
-                <td>{product.ratings}</td>
-                <td>{product.category}</td>
-                <td>{product.stock}</td>
-                <td>{new Date(product.createAt).toLocaleString()}</td>
-              <td>
-                <Link to={`/admin/product/${product._id}`} className='action-icon edit-icon'><Edit /></Link>
-                  <button className="action-icon delete-icon"
-                  onClick={()=>handleDelete(product._id)}><Delete /></button>
-                  
-              </td>
-            </tr>))}
-        </tbody>
-      </table>
+      <div className="table-wrapper">
+            <table className="product-table">
+              <thead>
+                <tr>
+                  <th>Sl No</th>
+                  <th>Product Image</th>
+                  <th>Product Name</th>
+                  <th>Price</th>
+                  <th>Ratings</th>
+                  <th>Category</th>
+                  <th>Stock</th>
+                  <th>Created At</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {products.map((product, index) => (
+                  <tr key={product._id}>
+                    <td>{index + 1}</td>
+                    <td><img src={product.image[0].url || '/no-image.png'} alt={product.name} className='admin-product-image' /></td>
+                    <td>{product.name}</td>
+                    <td>{product.price}</td>
+                    <td>{product.ratings}</td>
+                    <td>{product.category}</td>
+                    <td>{product.stock}</td>
+                    <td>{new Date(product.createAt).toLocaleString()}</td>
+                    <td>
+                      <Link to={`/admin/product/${product._id}`} className='action-icon edit-icon'><Edit /></Link>
+                      <button className="action-icon delete-icon"
+                        onClick={() => handleDelete(product._id)}><Delete /></button>
+
+                    </td>
+                  </tr>))}
+              </tbody>
+            </table>
+      </div>
+
+      
     </div>
 
    <Footer/>

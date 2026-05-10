@@ -47,17 +47,17 @@ const ProductDetails = () => {
 
   useEffect(() => {
     if (error) {
-      toast.error(error.message, { position: "top-center", autoClose: 3000 });
+      toast.error(error.message, { position: "top-center", autoClose: 2000 });
       dispatch(removeErrors());
     }
     if (cartError) {
-      toast.error(cartError, { position: "top-center", autoClose: 3000 });
+      toast.error(cartError, { position: "top-center", autoClose: 2000 });
     }
   }, [dispatch, error, cartError]);
 
   useEffect(() => {
     if (success) {
-      toast.success(message, { position: "top-center", autoClose: 3000 });
+      toast.success(message, { position: "top-center", autoClose: 2000 });
       dispatch(removeMessage());
     }
   }, [dispatch, success, message]);
@@ -66,7 +66,7 @@ const ProductDetails = () => {
     if (product.stock <= quantity) {
       toast.error("Cannot exceed available Stock!", {
         position: "top-center",
-        autoClose: 3000,
+        autoClose: 2000,
       });
       dispatch(removeErrors());
       return;
@@ -77,7 +77,7 @@ const ProductDetails = () => {
     if (quantity <= 1) {
       toast.error("Qunatity cannot be less than 1", {
         position: "top-center",
-        autoClose: 3000,
+        autoClose: 2000,
       });
       dispatch(removeErrors());
       return;
@@ -93,7 +93,7 @@ const ProductDetails = () => {
     if (!userRating) {
       toast.error("Please Select a rating", {
         position: "top-center",
-        autoClose: 3000,
+        autoClose: 2000,
       });
       return;
     }
@@ -110,7 +110,7 @@ const ProductDetails = () => {
     if (reviewSuccess) {
       toast.success("Review Submitted Successfully", {
         position: "top-center",
-        autoClose: 3000,
+        autoClose: 2000,
       });
       setuserRating(0);
       setComment("");

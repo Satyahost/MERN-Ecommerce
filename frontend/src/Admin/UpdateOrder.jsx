@@ -34,18 +34,18 @@ const UpdateOrder = () => {
     const finalOrderStatus = paymentStatus==='Not Paid'?'Cancelled':orderStatus;
     const handleStatusUpdate=()=>{
         if(!status){
-            toast.error('Please select a status',{position:'top-center',autoClose:3000})
+            toast.error('Please select a status',{position:'top-center',autoClose:2000})
             return
         }
         dispatch(updateOrderStatus({orderId ,status}))
     }
      useEffect(() => {
         if (error) {
-          toast.error(error, { position: "top-center", autoClose: 3000 });
+          toast.error(error, { position: "top-center", autoClose: 2000 });
           dispatch(removeErrors());
         }
         if(success){
-            toast.success("Order Status updated successfully", { position: "top-center", autoClose: 3000 });
+            toast.success("Order Status updated successfully", { position: "top-center", autoClose: 2000 });
             dispatch(removeSuccess());
             dispatch(getOrderDetails(orderId))
 

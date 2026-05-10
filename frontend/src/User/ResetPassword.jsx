@@ -27,7 +27,7 @@ const ResetPassword = () => {
             if (error) {
                 toast.error(error?.message || error, {
                     position: "top-center",
-                    autoClose: 3000,
+                    autoClose: 2000,
                     toastId: "update-error"
                 })
     
@@ -39,7 +39,7 @@ const ResetPassword = () => {
             if (success) {
                 toast.success('Password Reset Successfully', {
                     position: "top-center",
-                    autoClose: 3000,
+                    autoClose: 2000,
                     toastId: "update-success"
                 })
     

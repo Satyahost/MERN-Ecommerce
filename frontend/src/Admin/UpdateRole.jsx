@@ -51,7 +51,7 @@ const UpdateRole = () => {
     if (success) {
       toast.success("User Role Updated Successfully", {
         position: "top-center",
-        autoClose: 3000,
+        autoClose: 2000,
       });
 
       dispatch(removeSuccess());
@@ -61,7 +61,7 @@ const UpdateRole = () => {
     if (error) {
       toast.error(error, {
         position: "top-center",
-        autoClose: 3000,
+        autoClose: 2000,
       });
 
       dispatch(removeErrors());

@@ -50,7 +50,7 @@ const CreateProduct = () => {
     if (error) {
       toast.error(error, {
         position: "top-center",
-        autoClose: 3000,
+        autoClose: 2000,
       });
       dispatch(removeErrors());
     }
@@ -58,7 +58,7 @@ const CreateProduct = () => {
     if (success) {
       toast.success("Product Created Successfully", {
         position: "top-center",
-        autoClose: 3000,
+        autoClose: 2000,
       });
 
       dispatch(removeSuccess());

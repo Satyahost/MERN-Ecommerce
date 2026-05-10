@@ -22,7 +22,7 @@ const ForgotPassword = () => {
             if (error) {
                 toast.error(error?.message || error, {
                     position: "top-center",
-                    autoClose: 3000,
+                    autoClose: 2000,
                     toastId: "update-error"
                 })
     
@@ -34,7 +34,7 @@ const ForgotPassword = () => {
                 if (success) {
                     toast.success(message, {
                         position: "top-center",
-                        autoClose: 3000,
+                        autoClose: 2000,
                         toastId: "update-success"
                     })
         

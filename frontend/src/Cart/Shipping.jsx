@@ -31,8 +31,8 @@ const Shipping = () => {
             return;
         }
         dispatch(saveShippingInfo({
-            shippingData: { address, pinCode, phoneNumber, country, state, city },  // 👈 fixed
-            userId  // 👈 fixed
+            shippingData: { address, pinCode, phoneNumber, country, state, city }, 
+            userId 
         }))
         navigate('/order/confirm')
     }

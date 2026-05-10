@@ -20,7 +20,7 @@ function OrderDetails() {
 
   useEffect(() => {
     if (error) {
-      toast.error(error, { position: "top-center", autoClose: 3000 });
+      toast.error(error, { position: "top-center", autoClose: 2000 });
       dispatch(removeErrors());
     }
   }, [dispatch, error]);

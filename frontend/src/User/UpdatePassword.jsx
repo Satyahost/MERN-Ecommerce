@@ -46,7 +46,7 @@ const UpdatePassword = () => {
         if (error) {
             toast.error(error?.message || error, {
                 position: "top-center",
-                autoClose: 3000,
+                autoClose: 2000,
                 toastId: "update-error"
             })
 
@@ -59,7 +59,7 @@ const UpdatePassword = () => {
         if (success) {
             toast.success('Password Updated Successfully', {
                 position: "top-center",
-                autoClose: 3000,
+                autoClose: 2000,
                 toastId: "update-success"
             })
 

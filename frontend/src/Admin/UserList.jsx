@@ -33,7 +33,7 @@ const UserList = () => {
     if (error) {
       toast.error(error, {
         position: "top-center",
-        autoClose: 3000,
+        autoClose: 2000,
       });
 
       dispatch(removeErrors());
@@ -42,7 +42,7 @@ const UserList = () => {
     if (message) {
       toast.success(message, {
         position: "top-center",
-        autoClose: 3000,
+        autoClose: 2000,
       });
 
       dispatch(clearMessage());
@@ -63,14 +63,14 @@ const UserList = () => {
     if (error) {
       toast.error(error, {
         position: "top-center",
-        autoClose: 3000,
+        autoClose: 2000,
       })
       dispatch(removeErrors())
     }
     if(message){
       toast.success(message, {
         position: "top-center",
-        autoClose: 3000,
+        autoClose: 2000,
       })
       dispatch(clearMessage())
       navigate('/admin/users')
