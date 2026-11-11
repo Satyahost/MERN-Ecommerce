@@ -15,6 +15,7 @@ import product from "./routes/productRoutes.js";
 import user from "./routes/userRoutes.js";
 import order from "./routes/orderRoutes.js";
 import payment from "./routes/paymentRoutes.js";
+import ai from "./routes/aiRoutes.js";
 import errorHandleMiddleware from "./middleware/error.js";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -22,19 +23,36 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 
+const allowedOrigins = [
+  "http://localhost:5173",
+  "http://localhost:3000",
+];
+
 app.use(
   cors({
     origin: function (origin, callback) {
-      if (!origin || origin.endsWith(".vercel.app")) {
+      // Allow requests without an origin
+      // and localhost / Vercel frontend
+      if (
+        !origin ||
+        allowedOrigins.includes(origin) ||
+        origin.endsWith(".vercel.app")
+      ) {
         callback(null, true);
       } else {
         callback(new Error("Not allowed by CORS"));
       }
     },
+
     credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-  }),
+
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+
+    allowedHeaders: [
+      "Content-Type",
+      "Authorization",
+    ],
+  })
 );
 
 app.use(express.json({ limit: "50mb" }));
@@ -47,6 +65,7 @@ app.use("/api/v1", product);
 app.use("/api/v1", user);
 app.use("/api/v1", order);
 app.use("/api/v1", payment);
+app.use("/api/v1", ai);
 
 // Static frontend files
 app.use(express.static(path.join(__dirname, "../frontend/dist")));

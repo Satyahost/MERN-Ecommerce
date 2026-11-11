@@ -34,6 +34,7 @@ import ReviewsList from './Admin/ReviewsList'
 import AboutUs from './pages/AboutUs'
 import ContactUs from './pages/ContactUs'
 import Cart from './Cart/Cart'
+import AIAssistant from './ai/AIAssistant'
 
 const App = () => {
   const { isAuthenticated, user } = useSelector(state => state.user);
@@ -95,6 +96,7 @@ const App = () => {
       </Routes>
       
       {isAuthenticated && <UserDashboard user={user} />}
+      <AIAssistant />
     </Router>
   )
 }

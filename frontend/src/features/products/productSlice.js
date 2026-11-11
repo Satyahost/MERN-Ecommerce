@@ -3,24 +3,35 @@ import axios from 'axios';
 
 export const getProduct = createAsyncThunk(
   "product/getProduct",
-  async ({keyword="",page=1,category=""}, { rejectWithValue }) => {
+  async ({ keyword = "", page = 1, category = "" }, { rejectWithValue }) => {
     try {
-         let link = `${import.meta.env.VITE_API_URL}/api/v1/products?page=${page}`;
+      let link = `${import.meta.env.VITE_API_URL}/api/v1/products?page=${page}`;
 
-         if(category){
-            link += `&category=${encodeURIComponent(category)}`;
-         }
-         if(keyword){
-           link += `&keyword=${encodeURIComponent(keyword)}`;
-         }
-      
-      const { data } = await axios.get(link)
+      if (category) {
+        link += `&category=${encodeURIComponent(category)}`;
+      }
+
+      if (keyword) {
+        link += `&keyword=${encodeURIComponent(keyword)}`;
+      }
+
+      console.log("API URL:", link);
+
+      const { data } = await axios.get(link);
+
+      console.log("API RESPONSE:", data);
+
       return data;
-      
+
     } catch (error) {
-      return rejectWithValue(error.response?.data || "An error occured");
+      console.log("API ERROR:", error);
+      console.log("ERROR RESPONSE:", error.response?.data);
+
+      return rejectWithValue(
+        error.response?.data || "An error occurred"
+      );
     }
-  },
+  }
 );
 
 //Product Details
@@ -93,12 +104,19 @@ const productSlice = createSlice({
       })
       .addCase(getProduct.fulfilled, (state, action) => {
         console.log("Fulfilled action payload", action.payload);
+
         state.loading = false;
         state.error = null;
-        state.products = action.payload.products;
-        state.productCount = action.payload.productCount;
-        state.resultPerPage = action.payload.resultPerPage;
-        state.totalPages = action.payload.totalPages;
+
+        const response = action.payload;
+
+        state.products = Array.isArray(response?.products)
+          ? response.products
+          : [];
+
+        state.productCount = response?.productCount ?? 0;
+        state.resultPerPage = response?.resultPerPage ?? 4;
+        state.totalPages = response?.totalPages ?? 0;
       })
       .addCase(getProduct.rejected, (state, action) => {
         state.loading = false;
@@ -119,7 +137,6 @@ const productSlice = createSlice({
       .addCase(getProductDetails.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload || "Something went wrong";
-        state.products = [];
       });
 
       builder

@@ -1,4 +1,16 @@
-/node_modules
-/frontend/node_modules
-/frontend/dist
-/backend/cofig/config.env
+# Dependencies
+node_modules/
+frontend/node_modules/
+backend/node_modules/
+
+# Build files
+frontend/dist/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Backend secrets
+backend/config/config.env
+backend/config/serviceAccountKey.json
